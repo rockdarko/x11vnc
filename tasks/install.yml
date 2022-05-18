@@ -20,13 +20,13 @@
 
 - name: set x11vnc service autostart
   become: yes
-    systemd:
-      name: x11vnc
-      enabled: yes
+  systemd:
+    name: x11vnc
+    enabled: yes
   when: x11vnc_autostart is defined and x11vnc_autostart == "True"
 
 - name: restarting x11vnc service
   become: yes
-    systemd:
-      name: x11vnc
-      state: restarted
+  systemd:
+    name: x11vnc
+    state: restarted
