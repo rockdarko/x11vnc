@@ -1,10 +1,10 @@
 ---
 - name: stop x11vnc service
   become: yes
-    systemd:
-      name: x11vnc
-      state: stopped
-      enabled: no
+  systemd:
+    name: x11vnc
+    state: stopped
+    enabled: no
 
 - name: remove x11vnc
   become: yes
