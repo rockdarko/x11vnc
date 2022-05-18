@@ -16,7 +16,7 @@
 
 - name: set x11vnc password
   become: yes
-  cmd: "x11vnc -storepasswd {{ x11vnc_password }} /etc/x11vnc.pass"
+  command: "x11vnc -storepasswd {{ x11vnc_password }} /etc/x11vnc.pass"
 
 - name: set x11vnc service autostart
   become: yes
