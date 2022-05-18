@@ -8,7 +8,7 @@
 
 - name: remove x11vnc
   become: yes
-  pkg:
+  package:
     name: x11vnc
     state: absent
 

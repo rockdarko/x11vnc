@@ -1,7 +1,7 @@
 ---
 - name: install x11vnc
   become: yes
-  pkg:
+  package:
     name: x11vnc
     state: present
 
