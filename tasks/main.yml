@@ -1,0 +1,8 @@
+---
+- name: install x11vnc
+  include_tasks: install.yml
+  when: x11vnc_action == "install"
+
+- name: remove x11vnc
+  include_tasks: remove.yml
+  when: x11vnc_action == "remove"

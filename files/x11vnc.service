@@ -1,0 +1,14 @@
+[Unit]
+Description=VNC Server for X11
+Requires=graphical.target
+After=graphical.target
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/x11vnc -display :0 -rfbauth /etc/x11vnc.pass -auth /home/darko/.Xauthority -rfbport 5900 -shared -forever -o /var/l$
+ExecStop=/usr/bin/x11vnc -R stop
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

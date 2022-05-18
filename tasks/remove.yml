@@ -1,0 +1,25 @@
+---
+- name: stop x11vnc service
+  become: yes
+    systemd:
+      name: x11vnc
+      state: stopped
+      enabled: no
+
+- name: remove x11vnc
+  become: yes
+  pkg:
+    name: x11vnc
+    state: absent
+
+- name: remove x11vnc config
+  become: yes
+  file:
+    path: /usr/lib/systemd/system/x11vnc.service
+    state: absent
+
+- name: remove x11vnc password file
+  file:
+    path: /etc/x11vnc.pass
+    state: absent
+

@@ -1,0 +1,32 @@
+---
+- name: install x11vnc
+  become: yes
+  pkg:
+    name: x11vnc
+    state: present
+
+- name: copy x11vnc config
+  become: yes
+  copy:
+    src: x11vnc.service
+    dest: /usr/lib/systemd/system/x11vnc.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: set x11vnc password
+  become: yes
+  cmd: "x11vnc -storepasswd {{ x11vnc_password }} /etc/x11vnc.pass"
+
+- name: set x11vnc service autostart
+  become: yes
+    systemd:
+      name: x11vnc
+      enabled: yes
+  when: x11vnc_autostart is defined and x11vnc_autostart == "True"
+
+- name: restarting x11vnc service
+  become: yes
+    systemd:
+      name: x11vnc
+      state: restarted
